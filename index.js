@@ -1,14 +1,19 @@
 const http = require("http");
-const PORT = process.env.PORT || 5000;
 const express = require("express");
+const path = require("path");
+
+const PORT = process.env.PORT || 5000;
 
 // Init express
 const app = express();
 
+// Home page route
 app.get("/", (req, res) => {
-  // load index.html
-  res.sendFile(__dirname + "/public/views/index.html");
+  res.sendFile(path.join(__dirname, "public", "views", "index.html"));
 });
+
+// Set static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Init server
 app.listen(PORT, () =>

@@ -1,0 +1,8 @@
+- navbar items
+    - left: logo
+    - right: github, linkedin, resume, email
+- loading screen
+- rocket cursor
+- michigan: adultswim feature
+- name: arabic feature
+- scroll down to z index
