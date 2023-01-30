@@ -8,3 +8,4 @@
 - scroll down z index
 
 - navbar when shrinked yuck
+help pls
