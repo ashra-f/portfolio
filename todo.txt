@@ -2,7 +2,7 @@
     - left: logo
     - right: github, linkedin, resume, email
 - loading screen
-- rocket cursor
-- michigan: adultswim feature
+- rocket cursor animation
+- adultswim feature align center
 - name: arabic feature
-- scroll down to z index
+- scroll down z index

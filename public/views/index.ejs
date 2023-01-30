@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css"
+      integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="js/app.js" defer></script>
+    <title>Ash Hammoud</title>
+  </head>
+  <body>
+    <canvas id="stars"></canvas>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3 fixed-top" id="navigation-bar">
+      <div class="container">
+        <a href="/" class="navbar-brand">Ash's Site</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="https://github.com/ashra-f" class="nav-link">
+                <img src="../imgs/github.png" alt="GitHub" />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.linkedin.com/in/ashra-f/" class="nav-link">
+                <img
+                  src="../imgs/linkedin.png"
+                  alt="LinkedIn"
+                  class="linkedin-img"
+                />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="mailto: ashrafhammoud2@gmail.com" class="nav-link">
+                <img src="../imgs/gmail.png" alt="Gmail" />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <img src="../imgs/download.png" alt="resume" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Body -->
+    <div
+      class="container d-flex justify-content-center align-items-center p-3 flex-column"
+      id="body-container"
+    >
+      <!-- About -->
+      <section class="container demo" id="about">
+        <h1 class="text-center" id="my-name">Ash Hammoud</h1>
+        <h4 class="text-center" id="typedtext">
+          <!-- I'm a software engineering student based in
+          <span id="my-location" class=""> detroit, michigan </span> -->
+        </h4>
+        <a href="#skills" class="scroll-btn">
+          <span></span>
+          Skills
+        </a>
+      </section>
+      <!-- Skills -->
+      <section class="container demo" id="skills">
+        <!-- <h3 class="text-center">Skills</h3> -->
+        <div class="orbit">
+          <ul class="orbit-wrap">
+            <li class="orbit-center">
+              <i class="orbit-center__icon fa fa-code"></i>
+            </li>
+
+            <li>
+              <ul class="ring-0">
+                <!-- JavaScript -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/JavaScript"
+                    ><i class="orbit-icon fa-brands fa-square-js"></i
+                  ></a>
+                </li>
+                <!-- HTML -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/HTML"
+                    ><i class="orbit-icon fa-brands fa-html5"></i
+                  ></a>
+                </li>
+                <!-- CSS -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/CSS"
+                    ><i class="orbit-icon fa-brands fa-css3"></i
+                  ></a>
+                </li>
+                <!-- Boostrap -->
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)"
+                    ><i class="orbit-icon fa-brands fa-bootstrap"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="ring-1">
+                <!-- MySQL -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/MySQL">
+                    <img
+                      src="../imgs/mysql.svg"
+                      alt="MySQL"
+                      class="orbit-icon mysql-icon"
+                    />
+                  </a>
+                </li>
+                <!-- PHP -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/PHP">
+                    <img src="../imgs/php.svg" alt="PHP" class="orbit-icon" />
+                  </a>
+                </li>
+                <!-- Sass -->
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)"
+                    ><i class="orbit-icon fa-brands fa-sass"></i
+                  ></a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="ring-2">
+                <!-- Git -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Git"
+                    ><i class="orbit-icon fa-brands fa-git"></i
+                  ></a>
+                </li>
+                <!-- Node.js -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Node.js">
+                    <img
+                      src="../imgs/nodejs.svg"
+                      alt="Node.js"
+                      class="orbit-icon"
+                    />
+                  </a>
+                </li>
+                <!-- Laravel -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Laravel">
+                    <img
+                      class="orbit-icon my-laravel"
+                      src="../imgs/laravel.svg"
+                      alt="Laravel"
+                    />
+                  </a>
+                </li>
+                <!-- GitHub -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/GitHub"
+                    ><i class="orbit-icon fa-brands fa-github"></i
+                  ></a>
+                </li>
+                <!-- Python -->
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Python_(programming_language)"
+                  >
+                    <img
+                      class="orbit-icon my-python"
+                      src="../imgs/python.svg"
+                      alt="Python"
+                    />
+                  </a>
+                </li>
+                <!-- C++ -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/C%2B%2B">
+                    <img
+                      class="orbit-icon my-cpp"
+                      src="../imgs/cpp.svg"
+                      alt="C++"
+                    />
+                  </a>
+                </li>
+                <!-- jQuery -->
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/JQuery">
+                    <img
+                      class="orbit-icon my-jquery"
+                      src="../imgs/jquery.svg"
+                      alt="jQuery"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="ring-3">
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/C_(programming_language)"
+                  >
+                    <img src="../imgs/c.svg" alt="C" class="orbit-icon" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Java_(programming_language)"
+                  >
+                    <img src="../imgs/java.svg" alt="Java" class="orbit-icon" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Heroku">
+                    <img
+                      src="../imgs/heroku.svg"
+                      alt="Heroku"
+                      class="orbit-icon"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <a href="#projects" class="scroll-btn">
+          <span></span>
+          Projects
+        </a>
+      </section>
+      <!-- Projects -->
+      <section class="container demo" id="projects">
+        <h3 class="text-center">Projects</h3>
+        <ul
+          class="list-group list-group-horizontal d-flex justify-content-center"
+        >
+          <li class="list-group-item h-25">
+            <div class="card" style="width: 18rem">
+              <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item h-25">
+            <div class="card" style="width: 18rem">
+              <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item h-25">
+            <div class="card" style="width: 18rem">
+              <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container"></div>
+    </footer>
+  </body>
+</html>

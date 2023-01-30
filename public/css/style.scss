@@ -1,14 +1,26 @@
+// import math module
+@use 'sass:math';
+
+@font-face {
+    font-family: Futuristic-Light;
+    src: url('../fonts/RollboxExtraLight-p7PYy.ttf');
+}
+
+@font-face {
+    font-family: Futuristic-Black;
+    src: url('../fonts/RollboxBoldItalic-ZVx0q.ttf');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    // rotate rocket image
-    cursor: url('../imgs/rocket.png'), auto;
+    // cursor: url('../imgs/rocket.png'), auto;
+    font-family: 'Futuristic-Light', sans-serif;
 }
 
 html,
 body {
-    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     background-color: #313131 !important;
@@ -43,6 +55,7 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     z-index: 3;
+    background: none;
 }
 
 #about,
@@ -85,7 +98,6 @@ section::after {
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
     color: #fff;
-    font: normal 400 20px/1 'Josefin Sans', sans-serif;
     letter-spacing: .1em;
     text-decoration: none;
     transition: opacity .3s;
@@ -103,7 +115,6 @@ section::after {
     position: absolute;
     top: 0;
     left: 50%;
-    // right: 50%;
     width: 24px;
     height: 24px;
     margin-left: -12px;
@@ -122,7 +133,6 @@ section::after {
     position: absolute;
     top: 0;
     left: 50%;
-    // right: 50%;
     width: 46px;
     height: 46px;
     margin-left: -23px;
@@ -184,5 +194,255 @@ section::after {
 
     100% {
         opacity: 0;
+    }
+}
+
+#my-location {
+    position: relative;
+}
+
+#mich-gif {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 10%);
+
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#my-name {
+    font-family: Futuristic-Black;
+}
+
+.nav-link {
+    img {
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .linkedin-img {
+        width: 35px;
+    }
+}
+
+.navbar-nav,
+.navbar-brand {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+$orbitItemSize: 1.6em;
+$map: (
+    ring-0: 4,
+    ring-1: 3,
+    ring-2: 8,
+    ring-3: 3
+);
+$lastRing: 3;
+
+
+// Skills Orbit
+.orbit {
+    float: left;
+    width: 100%;
+    min-width: 100vw;
+    min-height: 80vh;
+}
+
+.orbit-icon {
+    width: $orbitItemSize;
+    height: $orbitItemSize;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: math.div(-$orbitItemSize, 2);
+    margin-top: math.div(-$orbitItemSize, 2);
+    border-radius: 50%;
+    background-color: #fff;
+    color: #2196f3;
+    text-align: center;
+    line-height: 100%;
+    font-size: 1.2em;
+    box-shadow: 0 0 0 1px rgba(33, 150, 243, 0.8);
+    transition: all 300ms ease-in-out;
+    padding: 3px;
+
+    &.fa-brands {
+        padding-top: 8px;
+    }
+}
+
+.orbit-wrap {
+    height: 40em;
+    list-style: none;
+    font-size: 1.3em;
+
+    >li {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+            ul {
+                border-width: 2px;
+                border-color: #fff;
+            }
+
+            ~li ul {
+                border-color: rgba(255, 255, 255, 0.2);
+
+                li {
+                    opacity: 0.4;
+                }
+            }
+        }
+
+    }
+}
+
+ul[class^=ring] {
+    @extend %ring;
+    transition: all 300ms ease-in-out;
+
+    li {
+        @extend %orbiting-object;
+        transition: all 300ms ease-in-out;
+    }
+}
+
+@mixin orbit-item($numItems, $numRing) {
+    @for $s from 1 through $numItems {
+        // Spread items over the ring
+        $deg: math.div(380deg, $numItems);
+
+        .ring-#{$numRing}>*:nth-of-type(#{$s}) {
+            transform: rotate($s * $deg) translate(12.5em - ($numRing * 2.5)) rotate(-$s * $deg);
+        }
+    }
+}
+
+// Render rings
+@for $i from 0 through $lastRing {
+    .ring-#{$i} {
+        // decrease each ring in size
+        width: 25em - ($i * 5);
+        height: 25em - ($i * 5);
+        animation: clockwiseRotate 35s - ($i * 5) linear infinite;
+
+        i,
+        img {
+            animation: counterClockwiseRotate 35s - ($i * 5) linear infinite;
+        }
+    }
+
+    @include orbit-item(map-get($map, ring-#{$i}), $i);
+}
+
+
+%ring {
+    border: solid 1px rgba(33, 150, 243, 0.8);
+    position: relative;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    box-sizing: content-box;
+}
+
+%orbiting-object {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $orbitItemSize;
+    height: $orbitItemSize;
+    margin: math.div(-$orbitItemSize, 2)
+}
+
+/*
+  center;
+*/
+.orbit-center {
+    z-index: 5;
+    font-size: 2em;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
+    background: #FFE87C;
+    color: #222;
+    border-radius: 50%;
+    padding-top: 5px;
+
+    &:hover .orbit-center__icon {
+        transform: rotateZ(0deg);
+    }
+}
+
+.orbit-center__icon {
+    transform: rotateZ(-360deg);
+    transition: all 300ms ease-in-out;
+}
+
+.orbit-wrap>li.orbit-center:hover~li>ul {
+    width: 0;
+    height: 0;
+
+    * {
+        transform: translate(0, 0);
+    }
+}
+
+/* 
+    animations 
+*/
+@keyframes clockwiseRotate {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes counterClockwiseRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* 
+icons 
+*/
+$icons : (('python', #306998, #FFD43B),
+    ('square-js', #222, #FFD600),
+    ('bootstrap', #7914f6, white),
+    ('node', #6cc24a, black),
+    ('linux', white, #222),
+    ('html5', #e65100, white),
+    ('css3', #2196f3, white),
+    ('git', #222, white),
+    ('codepen', #333, white),
+    ('laravel', blue, blue),
+    ('github', #333, white),
+    ('sass', #CD6799, #f5f5f5));
+
+@each $icon in $icons {
+    .fa-#{nth($icon, 1)} {
+        background: nth($icon, 2);
+        color: nth($icon, 3);
     }
 }

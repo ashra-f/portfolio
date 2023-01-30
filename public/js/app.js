@@ -76,6 +76,61 @@ function updateStars() {
   window.requestAnimationFrame(updateStars);
 }
 
+// set up text to print, each item in array is new line
+var aText = new Array(
+  `a software engineering student based in`,
+  `detroit, michigan</span>`
+);
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ""; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter() {
+  sContents = " ";
+  iRow = Math.max(0, iIndex - iScrollAt);
+  var destination = document.getElementById("typedtext");
+
+  while (iRow < iIndex) {
+    sContents += aText[iRow++] + `<br /><span id="my-location">`;
+  }
+  destination.innerHTML =
+    sContents +
+    aText[iIndex].substring(0, iTextPos) +
+    `<span id="blinker">_</span>`;
+  if (iTextPos++ == iArrLength) {
+    iTextPos = 0;
+    iIndex++;
+    if (iIndex != aText.length) {
+      iArrLength = aText[iIndex].length;
+      setTimeout("typewriter()", 500);
+    }
+  } else {
+    setTimeout("typewriter()", iSpeed);
+  }
+  // blinker animation forever
+  setInterval(function () {
+    $("#blinker").fadeToggle(500);
+  }, 500);
+}
+
+// global variable to store gifs
+let gifs;
+
+// fetch gifs
+fetch("http://localhost:5000/api/gifs")
+  .then((response) => response.json())
+  .then((data) => {
+    gifs = data[0];
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
 jQuery(function () {
   // Scroll to section
   $("a[href*=\\#]").on("click", function (e) {
@@ -98,4 +153,24 @@ jQuery(function () {
       "linear"
     );
   });
+
+  $(document)
+    .on("mouseenter", "#my-location", function () {
+      // if gifs array is undefined, return
+      if (gifs === undefined) return;
+
+      // pick a random gif
+      const gif_url = gifs[Math.floor(Math.random() * gifs.length)];
+
+      // add an img tag with id mich-gif and the random gif
+      $(this).append(
+        `<img id="mich-gif" src="../imgs/michigan-gifs/${gif_url}" />`
+      );
+    })
+    .on("mouseleave", "#my-location", function () {
+      // remove the img tag with id mich-gif
+      $("#mich-gif").remove();
+    });
+
+  typewriter();
 });
