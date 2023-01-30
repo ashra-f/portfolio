@@ -173,4 +173,6 @@ jQuery(function () {
     });
 
   typewriter();
+
+  //
 });

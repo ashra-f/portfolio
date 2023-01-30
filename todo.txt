@@ -6,3 +6,5 @@
 - adultswim feature align center
 - name: arabic feature
 - scroll down z index
+
+- navbar when shrinked yuck

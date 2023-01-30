@@ -85,7 +85,8 @@ section::after {
 
 .demo .scroll-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
+  left: 100%;
   z-index: 2;
   display: inline-block;
   transform: translate(0, -50%);
@@ -99,10 +100,17 @@ section::after {
   opacity: 0.5;
 }
 
+#skills .scroll-btn,
 #about .scroll-btn {
   padding-top: 60px;
 }
 
+#skills .scroll-btn,
+#about .scroll-btn {
+  padding-top: 80px;
+}
+
+#skills .scroll-btn span,
 #about .scroll-btn span {
   position: absolute;
   top: 0;
@@ -113,39 +121,54 @@ section::after {
   border-left: 1px solid #fff;
   border-bottom: 1px solid #fff;
   transform: rotate(-45deg);
+  -webkit-animation: sdb07 2s infinite;
+  animation: sdb07 2s infinite;
+  opacity: 0;
   box-sizing: border-box;
 }
 
-#skills .scroll-btn {
-  padding-top: 60px;
+#skills .scroll-btn span:nth-of-type(1),
+#about .scroll-btn span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
 }
 
-#skills .scroll-btn span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin-left: -23px;
-  border: 1px solid #fff;
-  border-radius: 100%;
-  box-sizing: border-box;
+#skills .scroll-btn span:nth-of-type(2),
+#about .scroll-btn span:nth-of-type(2) {
+  top: 16px;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 
-#skills .scroll-btn span::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  content: "";
-  width: 16px;
-  height: 16px;
-  margin: -12px 0 0 -8px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  transform: rotate(-45deg);
-  box-sizing: border-box;
+#skills .scroll-btn span:nth-of-type(3),
+#about .scroll-btn span:nth-of-type(3) {
+  top: 32px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
+@-webkit-keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @-webkit-keyframes sdb10 {
   0% {
     -webkit-transform: translate(0, 0);
