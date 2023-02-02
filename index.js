@@ -24,6 +24,13 @@ app.get("/api/gifs", (req, res) => {
   });
 });
 
+// app.use(function (req, res, next) {
+//   res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+//   res.setHeader("Pragma", "no-cache");
+//   res.setHeader("Expires", "0");
+//   next();
+// });
+
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 

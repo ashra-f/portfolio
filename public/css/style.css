@@ -13,23 +13,11 @@
   font-family: "Futuristic-Light", sans-serif;
 }
 
-html,
-body {
-  font-size: 16px;
-  line-height: 1.5;
-  background-color: #313131 !important;
-  color: aliceblue !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+html {
+  scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
-  display: none;
   /* Safari and Chrome */
 }
 
@@ -37,6 +25,25 @@ body::-webkit-scrollbar {
   height: 100vh !important;
   position: fixed;
   bottom: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 7600px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #313131 !important;
+  color: aliceblue !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+img {
+  height: auto;
 }
 
 #body-container,
@@ -48,7 +55,7 @@ body::-webkit-scrollbar {
 #navigation-bar {
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 10;
   background: none;
 }
 
@@ -56,6 +63,7 @@ body::-webkit-scrollbar {
 #projects,
 #skills {
   height: 100vh;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +75,19 @@ body::-webkit-scrollbar {
   z-index: 2;
 }
 
-section {
+#about {
+  z-index: -10;
+}
+
+#projects {
+  z-index: -10;
+}
+
+#skills {
+  z-index: -10;
+}
+
+Scroll down button section {
   position: relative;
   width: 100%;
   height: 100%;
@@ -238,7 +258,7 @@ section::after {
   border-radius: 5px;
 }
 
-.orbit {
+Skills Orbit .orbit {
   float: left;
   width: 100%;
   min-width: 100vw;
@@ -503,6 +523,41 @@ ul[class^=ring] li {
     transform: rotate(-360deg);
   }
 }
+#content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#viewport {
+  -webkit-perspective: 300px;
+  -moz-perspective: 300px;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+
+.frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.frame.box {
+  border-radius: 0.5em;
+  padding: 2em;
+}
+
 /* 
 icons 
 */
@@ -564,4 +619,26 @@ icons
 .fa-sass {
   background: #CD6799;
   color: #f5f5f5;
+}
+
+#navigation-btns {
+  padding: 0;
+}
+
+.navigation-btn {
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: end !important;
+}
+
+.navigation-btn:hover,
+.navigation-btn:focus,
+.navigation-btn:active {
+  color: #9C2E35 !important;
+  border: 1px solid transparent !important;
+}
+
+.navigation-btn:disabled {
+  border: 1px solid transparent !important;
 }/*# sourceMappingURL=style.css.map */

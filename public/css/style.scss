@@ -19,23 +19,26 @@
     font-family: 'Futuristic-Light', sans-serif;
 }
 
-html,
-body {
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: #313131 !important;
-    color: aliceblue !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    scrollbar-width: none; // Firefox
-    -ms-overflow-style: none; // Internet Explorer 10+
+html {
+    scroll-behavior: smooth;
 }
 
+// body {
+//     font-size: 16px;
+//     line-height: 1.5;
+//     background-color: #313131 !important;
+//     color: aliceblue !important;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+//     scrollbar-width: none; // Firefox
+//     -ms-overflow-style: none; // Internet Explorer 10+
+// }
+
 body::-webkit-scrollbar {
-    display: none;
+    // display: none;
     /* Safari and Chrome */
 }
 
@@ -43,6 +46,27 @@ body::-webkit-scrollbar {
     height: 100vh !important;
     position: fixed;
     bottom: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 7600px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #313131 !important;
+    color: aliceblue !important;
+    // overflow: hidden;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // Internet Explorer 10+
+}
+
+img {
+    // max-width: 100%;
+    height: auto;
 }
 
 #body-container,
@@ -54,7 +78,7 @@ body::-webkit-scrollbar {
 #navigation-bar {
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 10;
     background: none;
 }
 
@@ -62,6 +86,7 @@ body::-webkit-scrollbar {
 #projects,
 #skills {
     height: 100vh;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,8 +97,20 @@ body::-webkit-scrollbar {
     }
 }
 
-// Scroll down button
-section {
+#about {
+    z-index: -10;
+}
+
+#projects {
+    z-index: -10;
+}
+
+#skills {
+    z-index: -10;
+}
+
+
+Scroll down button section {
     position: relative;
     width: 100%;
     height: 100%;
@@ -277,8 +314,7 @@ $map: (
 $lastRing: 3;
 
 
-// Skills Orbit
-.orbit {
+Skills Orbit .orbit {
     float: left;
     width: 100%;
     min-width: 100vw;
@@ -453,6 +489,45 @@ ul[class^=ring] {
     }
 }
 
+#content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#viewport {
+    -webkit-perspective: 300px;
+    -moz-perspective: 300px;
+    -webkit-perspective-origin: 50% 50%;
+    -moz-perspective-origin: 50% 50%;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.frame.box {
+    border-radius: .5em;
+    padding: 2em;
+
+    // * {
+    //     color: white;
+    // }
+}
+
 /* 
 icons 
 */
@@ -474,4 +549,26 @@ $icons : (('python', #306998, #FFD43B),
         background: nth($icon, 2);
         color: nth($icon, 3);
     }
+}
+
+#navigation-btns {
+    padding: 0;
+}
+
+.navigation-btn {
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: end !important;
+}
+
+.navigation-btn:hover,
+.navigation-btn:focus,
+.navigation-btn:active {
+    color: #9C2E35 !important;
+    border: 1px solid transparent !important;
+}
+
+.navigation-btn:disabled {
+    border: 1px solid transparent !important;
 }
