@@ -1,52 +1,52 @@
-// TODO:
-// Refresh bug
-// Only works on firefox?
-// STLYING:
-// --- projs section styling
-// --- navbar styling
-// --- mark current location with a flag
-
-/*to prevent Firefox FOUC, this must be here*/
+// To prevent Firefox FOUC, this must be here
 let FF_FOUC_FIX;
 
-// function that keeps track of css transform value of frame box
+// If refresh is true, click the home button (fixes navigation bug)
+if (performance.getEntriesByType("navigation")[0].type === "reload") {
+  location.replace("/");
+}
+
+// Function that keeps track of css transform value of frame box
 function getTransformValue(el, prop) {
-  var transform = el.css("-webkit-transform") || el.css("-moz-transform");
+  var transform =
+    el.css("-webkit-transform") ||
+    el.css("-moz-transform") ||
+    el.css("transform");
   var matrix = transform.replace(/[^0-9\-.,]/g, "").split(",");
   var value = matrix[14];
   return parseInt(value);
 }
 
-// function to set transform value of frame box
+// Function to set transform value of frame box
 function setTransformValue(el, value) {
   el.css("-webkit-transform", "translateZ(" + value + "px)");
   el.css("-moz-transform", "translateZ(" + value + "px)");
-  console.log("set transform value to " + value);
+  el.css("transform", "translateZ(" + value + "px)");
+  // console.log("set transform value to " + value);
 }
 
-// set about-frame's display to none
+// Set about-frame's display to none
 $("#go-to-about").prop("disabled", true);
 
-// DOM selectors
+/* STARS BACKGROUND */
 const stars = document.getElementById("stars");
 const starsCtx = stars.getContext("2d");
 const output = document.querySelector("#speed");
 
-// global variables
 let screen,
   starsElements,
   starsParams = { speed: 1.5, number: 300, extinction: 4 };
 
-// run stars
+// // Run stars
 setupStars();
 updateStars();
 
-// update stars on resize to keep them centered
+// // Update stars on resize to keep them centered
 window.onresize = function () {
   setupStars();
 };
 
-// star constructor
+// Star constructor
 function Star() {
   this.x = Math.random() * stars.width;
   this.y = Math.random() * stars.height;
@@ -78,7 +78,7 @@ function Star() {
   };
 }
 
-// setup <canvas>, create all the starts
+// Setup <canvas>, create all the starts
 function setupStars() {
   screen = {
     w: window.innerWidth,
@@ -94,7 +94,7 @@ function setupStars() {
   }
 }
 
-// redraw the frame
+// Redraw the frame
 function updateStars() {
   starsCtx.fillStyle = "black";
   starsCtx.fillRect(0, 0, stars.width, stars.height);
@@ -105,11 +105,12 @@ function updateStars() {
   window.requestAnimationFrame(updateStars);
 }
 
-// set up text to print, each item in array is new line
+/* TYEPWRITER */
 var aText = new Array(
   `a software engineering student based in`,
   `detroit, michigan</span>`
 );
+
 var iSpeed = 100; // time delay of print out
 var iIndex = 0; // start printing array at this posision
 var iArrLength = aText[0].length; // the length of the text array
@@ -127,6 +128,7 @@ function typewriter() {
   while (iRow < iIndex) {
     sContents += aText[iRow++] + `<br /><span id="my-location">`;
   }
+
   destination.innerHTML =
     sContents +
     aText[iIndex].substring(0, iTextPos) +
@@ -147,10 +149,9 @@ function typewriter() {
   }, 500);
 }
 
-// global variable to store gifs
+/* FETCH GIFS */
 let gifs;
 
-// fetch gifs
 fetch("http://localhost:5000/api/gifs")
   .then((response) => response.json())
   .then((data) => {
@@ -160,63 +161,18 @@ fetch("http://localhost:5000/api/gifs")
     console.error("Error:", error);
   });
 
-jQuery(function () {
-  // Scroll to section
-  $("a[href*=\\#]").on("click", function (e) {
-    e.preventDefault();
-    // increase starsparms.speed for 1 seconds then slowly decrease it by 5 until it reaches 1
-    starsParams.speed = 100;
-    setTimeout(function () {
-      let interval = setInterval(function () {
-        starsParams.speed -= 5;
-        if (starsParams.speed <= 1) {
-          starsParams.speed = 3;
-          clearInterval(interval);
-        }
-      }, 100);
-    }, 1000);
-
-    $("html, body").animate(
-      { scrollTop: $($(this).attr("href")).offset().top },
-      500,
-      "linear"
-    );
-  });
-
-  $(document)
-    .on("mouseenter", "#my-location", function () {
-      // if gifs array is undefined, return
-      if (gifs === undefined) return;
-
-      // pick a random gif
-      const gif_url = gifs[Math.floor(Math.random() * gifs.length)];
-
-      // add an img tag with id mich-gif and the random gif
-      $(this).append(
-        `<img id="mich-gif" src="../imgs/michigan-gifs/${gif_url}" />`
-      );
-    })
-    .on("mouseleave", "#my-location", function () {
-      // remove the img tag with id mich-gif
-      $("#mich-gif").remove();
-    });
-
-  typewriter();
-});
-
-// Scroll Animation
+/* SCROLL ANIMATION */
 var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
   perspective = 300,
-  zSpacing = -3250;
-(zVals = []),
-  ($frames = $(".frame")),
-  (frames = $frames.toArray()),
-  (scrollMsg = document.getElementById("instructions-overlay"));
+  zSpacing = -3500;
+(zVals = []), ($frames = $(".frame")), (frames = $frames.toArray());
 numFrames = $frames.length;
 
-zVals.push(-6500);
-zVals.push(-3250);
-zVals.push(0);
+// print the z height of each frame
+
+zVals.push(zSpacing * 2);
+zVals.push(zSpacing * 1);
+zVals.push(zSpacing * 0);
 
 $(window).on("scroll", function (d, e) {
   // disable all navigation buttons
@@ -273,7 +229,9 @@ $(window).on("scroll", function (d, e) {
 
     frame.setAttribute(
       "style",
-      "-webkit-transform:" +
+      "transform:" +
+        transform +
+        "-webkit-transform:" +
         transform +
         ";-moz-transform:" +
         transform +
@@ -282,10 +240,6 @@ $(window).on("scroll", function (d, e) {
         ";opacity:" +
         opacity
     );
-    if (scrollMsg && zVals[numFrames - 1] > 200) {
-      scrollMsg.parentNode.removeChild(scrollMsg);
-      scrollMsg = null;
-    }
   }
 });
 
@@ -312,10 +266,19 @@ $("#go-to-skills").on("click", function () {
     // keep scrolling until #skills-frame transform value is 0
     var interval = setInterval(function () {
       var transform = getTransformValue($("#skills-frame"));
-      if (transform > -190 && transform < -95) {
+      if (transform > -200 && transform < -150) {
+        // wait 1 second then set the transform value to 0, -webkit-transform to 0, -moz-transform to 0
+        setTimeout(function () {
+          $("#skills-frame").css({
+            transform: "translateZ(0px)",
+            "-webkit-transform": "translateZ(0px)",
+            "-moz-transform": "translateZ(0px)",
+          });
+        }, 1000);
+
         clearInterval(interval);
       } else {
-        // scroll DOWN by 10
+        // scroll DOWN by 150
         $(window).scrollTop($(window).scrollTop() + 150);
       }
     });
@@ -323,7 +286,16 @@ $("#go-to-skills").on("click", function () {
     // keep scrolling until #skills-frame transform value is 0
     var interval = setInterval(function () {
       var transform = getTransformValue($("#skills-frame"));
-      if (transform > 140 && transform < 240) {
+      if (transform > 50 && transform < 200) {
+        // wait 1 second then set the transform value to 0, -webkit-transform to 0, -moz-transform to 0
+        setTimeout(function () {
+          $("#skills-frame").css({
+            transform: "translateZ(0px)",
+            "-webkit-transform": "translateZ(0px)",
+            "-moz-transform": "translateZ(0px)",
+          });
+        }, 1000);
+
         clearInterval(interval);
       } else {
         // scroll UP by 10
@@ -343,10 +315,42 @@ $("#go-to-projs").on("click", function () {
   var interval = setInterval(function () {
     var transform = getTransformValue($("#projects-frame"));
     if (transform > -150 && transform < 50) {
+      // wait 1 second then set the transform value to 0, -webkit-transform to 0, -moz-transform to 0
+      setTimeout(function () {
+        $("#projects-frame").css({
+          transform: "translateZ(0px)",
+          "-webkit-transform": "translateZ(0px)",
+          "-moz-transform": "translateZ(0px)",
+        });
+      }, 1000);
+
       clearInterval(interval);
     } else {
       // scroll down by 100
+      // console.log("scrolling down");
       $(window).scrollTop($(window).scrollTop() + 100);
     }
   });
+});
+
+jQuery(function () {
+  $(document)
+    .on("mouseenter", "#my-location", function () {
+      // if gifs array is undefined, return
+      if (gifs === undefined) return;
+
+      // pick a random gif
+      const gif_url = gifs[Math.floor(Math.random() * gifs.length)];
+
+      // add an img tag with id mich-gif and the random gif
+      $(this).append(
+        `<img id="mich-gif" src="../imgs/michigan-gifs/${gif_url}" />`
+      );
+    })
+    .on("mouseleave", "#my-location", function () {
+      // remove the img tag with id mich-gif
+      $("#mich-gif").remove();
+    });
+
+  typewriter();
 });

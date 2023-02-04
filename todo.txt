@@ -1,11 +1,14 @@
-- navbar items
-    - left: logo
-    - right: github, linkedin, resume, email
-- loading screen
-- rocket cursor animation
-- adultswim feature align center
-- name: arabic feature
-- scroll down z index
+HIGH Priority:
+    - only works on firefox... fix for chrome, safari, etc.
+    - finish projects section
+    - responsive design
+    - Styling:
+        - projs section styling
+        - navbar styling
+        - mark current location with a flag
 
-- navbar when shrinked yuck
-help pls
+LOW Priority:
+    - loading screen
+    - rocket cursor animation
+    - name: arabic feature
+    - top left animation next to ash's site

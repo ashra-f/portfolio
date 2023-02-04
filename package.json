@@ -17,6 +17,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "jquery-awesome-cursor": "^0.3.1"
+    "jquery-awesome-cursor": "^0.3.1",
+    "three": "^0.149.0"
   }
 }

@@ -38,7 +38,7 @@ html {
 // }
 
 body::-webkit-scrollbar {
-    // display: none;
+    display: none;
     /* Safari and Chrome */
 }
 
@@ -46,10 +46,8 @@ body::-webkit-scrollbar {
     height: 100vh !important;
     position: fixed;
     bottom: 0;
-}
-
-* {
-    box-sizing: border-box;
+    left: 0;
+    // z-index: -1;
 }
 
 body {
@@ -59,13 +57,12 @@ body {
     line-height: 1.5;
     background-color: #313131 !important;
     color: aliceblue !important;
-    // overflow: hidden;
+    overflow: hidden;
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // Internet Explorer 10+
 }
 
 img {
-    // max-width: 100%;
     height: auto;
 }
 
@@ -262,7 +259,6 @@ section::after {
 }
 
 // End of Scroll Buttons
-
 #my-location {
     position: relative;
 }
@@ -501,10 +497,14 @@ ul[class^=ring] {
 }
 
 #viewport {
+    position: fixed;
+    perspective: 300px;
     -webkit-perspective: 300px;
     -moz-perspective: 300px;
+    perspective-origin: 50% 50%;
     -webkit-perspective-origin: 50% 50%;
     -moz-perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     width: 100%;
@@ -515,6 +515,7 @@ ul[class^=ring] {
     position: absolute;
     width: 100%;
     height: 100%;
+    transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 }
@@ -522,6 +523,7 @@ ul[class^=ring] {
 .frame.box {
     border-radius: .5em;
     padding: 2em;
+    position: absolute;
 
     // * {
     //     color: white;
