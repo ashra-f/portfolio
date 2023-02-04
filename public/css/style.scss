@@ -23,19 +23,20 @@ html {
     scroll-behavior: smooth;
 }
 
-// body {
-//     font-size: 16px;
-//     line-height: 1.5;
-//     background-color: #313131 !important;
-//     color: aliceblue !important;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-//     scrollbar-width: none; // Firefox
-//     -ms-overflow-style: none; // Internet Explorer 10+
-// }
+/* body {
+     font-size: 16px;
+     line-height: 1.5;
+     background-color: #313131 !important;
+     color: aliceblue !important;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     scrollbar-width: none; // Firefox
+     -ms-overflow-style: none; // Internet Explorer 10+
+}
+*/
 
 body::-webkit-scrollbar {
     display: none;
@@ -55,7 +56,7 @@ body {
     text-align: center;
     font-size: 16px;
     line-height: 1.5;
-    background-color: #313131 !important;
+    background-color: black !important;
     color: aliceblue !important;
     overflow: hidden;
     scrollbar-width: none; // Firefox
@@ -83,7 +84,7 @@ img {
 #projects,
 #skills {
     height: 100vh;
-    position: absolute;
+    // position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,21 +95,9 @@ img {
     }
 }
 
-#about {
-    z-index: -10;
-}
-
-#projects {
-    z-index: -10;
-}
-
-#skills {
-    z-index: -10;
-}
-
-
 Scroll down button section {
     position: relative;
+    margin: 0 auto; // temp solution
     width: 100%;
     height: 100%;
 }

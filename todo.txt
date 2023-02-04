@@ -1,7 +1,6 @@
 HIGH Priority:
-    - only works on firefox... fix for chrome, safari, etc.
-    - finish projects section
-    - responsive design
+    - Finish projects section
+    - Responsive design
     - Styling:
         - projs section styling
         - navbar styling
@@ -12,3 +11,6 @@ LOW Priority:
     - rocket cursor animation
     - name: arabic feature
     - top left animation next to ash's site
+
+
+Smoother scrolling
