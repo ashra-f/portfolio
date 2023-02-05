@@ -42,16 +42,16 @@
   </script>
   <canvas id="stars"></canvas>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg py-3 fixed-top" id="navigation-bar">
-    <div class="container">
-      <a href="/" class="navbar-brand" id="home-btn">Ash's Site</a>
+  <nav class="navbar navbar-expand fixed-top m-0 d-flex justify-content-end" id="navigation-bar" style="padding: 1%">
+    <div class="container m-0">
+      <!-- <a href="/" class="navbar-brand" id="home-btn">Ash's Site</a> -->
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
 
       <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
+        <!-- <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a href="https://github.com/ashra-f" class="nav-link">
               <img src="../imgs/github.png" alt="GitHub" />
@@ -72,20 +72,27 @@
               <img src="../imgs/download.png" alt="resume" />
             </a>
           </li>
-        </ul>
+        </ul> -->
+        <!-- Navigation Buttoms -->
+        <div id="navigation-btns" class="container d-flex" style="justify-content: end;">
+          <button id="go-to-about" class="btn navigation-btn" disabled>[about]</button>
+          <button id="go-to-skills" class="btn navigation-btn">[skills]</button>
+          <button id="go-to-projs" class="btn navigation-btn">[projs]</button>
+        </div>
       </div>
     </div>
   </nav>
   <!-- Body -->
   <div class="container d-flex justify-content-center align-items-center p-3 flex-column" id="content">
     <div id="viewport">
-      <!-- Projects -->
+      <!-- Projects Frame -->
       <div id="projects-frame" class="frame box" style="transform: translateZ(-7000px); display: none;">
         <!-- display: none; -->
         <section class="container demo" id="projects">
           <h3 class="text-center">Projects</h3>
           <ul class="list-group list-group-horizontal d-flex justify-content-center">
             <li class="list-group-item h-25">
+              <button>click me</button>
               <!-- <div class="card" style="width: 18rem">
                 <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
                 <div class="card-body">
@@ -127,18 +134,15 @@
           </ul>
         </section>
       </div>
-      <!--Skills -->
+      <!--Skills Frame -->
       <div id="skills-frame" class="frame box" style="transform: translateZ(-3500px); display: none;">
-        <!-- display: none; -->
         <!-- Skills -->
         <section class="container demo" id="skills">
           <div class="orbit">
-            <!-- <h3 class="text-center">Skills</h3> -->
             <ul class="orbit-wrap">
               <li class="orbit-center">
                 <i class="orbit-center__icon fa fa-code"></i>
               </li>
-
               <li>
                 <ul class="ring-0">
                   <!-- JavaScript -->
@@ -246,13 +250,32 @@
               </li>
             </ul>
           </div>
+          <!-- Planet Description -->
+          <div id="planet-description" class="container position-fixed" style="bottom: 23px; left: 23px; width:300px">
+            <h4><strong>[</strong>the skills system<strong>]</strong></h4>
+            <p>
+              🌍 known planets: <span id="known-planets">17</span>
+              <br>
+              🕰️ age: <span id="skills-age">
+                <% var today=new Date(); var startDate=new Date("2020-6-10"); var age=today.getFullYear() -
+                  startDate.getFullYear(); %>
+                  <%= age %> years
+              </span>
+              <br>
+              🪐 largest planet: <span id="largest-planet">C++</span>
+              <br>
+              ✨ nearest star: <span id="nearest-star">projects</span>
+            </p>
+          </div>
         </section>
       </div>
-      <!-- About -->
+      <!-- About Frame -->
       <div id="about-frame" class="frame box" style="transform: translateZ(-0px); display: block;">
         <!-- About -->
         <section class="container demo" id="about">
+          <!-- Name -->
           <h1 class="text-center" id="my-name">Ash Hammoud</h1>
+          <!-- Description -->
           <h4 class="text-center" id="typedtext">
             <!-- I'm a software engineering student based in
           <span id="my-location" class=""> detroit, michigan </span> -->
@@ -261,13 +284,37 @@
       </div>
     </div>
   </div>
+  <!-- URL Links -->
+  <ul class="d-flex bg-white justify-content-center align-items-center flex-column p-0 position-absolute"
+    style="list-style-type: none; border-radius: 3px; left: 0; bottom: 5%;">
+    <li class="nav-item">
+      <a href="https://github.com/ashra-f" class="nav-link">
+        <img src="../imgs/github.png" alt="GitHub" />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://www.linkedin.com/in/ashra-f/" class="nav-link">
+        <img src="../imgs/linkedin.png" alt="LinkedIn" class="linkedin-img" />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="mailto:ashrafhammoud2@gmail.com" class="nav-link">
+        <img src="../imgs/gmail.png" alt="Gmail" />
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="../myresume.pdf" class="nav-link">
+        <img src="../imgs/download.png" alt="resume" />
+      </a>
+    </li>
+  </ul>
   <!-- Navigation Buttoms -->
-  <div id="navigation-btns" class="container position-fixed d-flex flex-column"
+  <!-- <div id="navigation-btns" class="container position-fixed d-flex flex-column"
     style="bottom: 10px; right: 10px; justify-content: end; width: 90px">
-    <button id="go-to-about" class="btn navigation-btn">about</button>
-    <button id="go-to-skills" class="btn navigation-btn">skills</button>
-    <button id="go-to-projs" class="btn navigation-btn">projs</button>
-  </div>
+    <button id="go-to-about" class="btn navigation-btn" disabled>[about]</button>
+    <button id="go-to-skills" class="btn navigation-btn">[skills]</button>
+    <button id="go-to-projs" class="btn navigation-btn">[projs]</button>
+  </div> -->
 </body>
 
 </html>

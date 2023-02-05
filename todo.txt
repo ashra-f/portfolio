@@ -1,5 +1,6 @@
 HIGH Priority:
-    - Finish projects section
+    - Start projects section
+    - Set section transform to zero on landing
     - Responsive design
     - Styling:
         - projs section styling
@@ -11,6 +12,5 @@ LOW Priority:
     - rocket cursor animation
     - name: arabic feature
     - top left animation next to ash's site
-
-
-Smoother scrolling
+    - smoother scrolling
+    - adjust star speed based on brower height

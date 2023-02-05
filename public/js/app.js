@@ -1,13 +1,8 @@
 jQuery(function () {
-  // If refresh is true, click the home button (fixes navigation bug)
-  if (performance.getEntriesByType("navigation")[0].type === "reload") {
-    location.replace("/");
-  }
+  /* TYEPWRITER */
+  typewriter();
 
-  // Set about-frame's display to none
-  $("#go-to-about").prop("disabled", true);
-
-  // Display random GIF on hover
+  /* DISPLAY RANDOM GIF ON-HOVER */
   $(document)
     .on("mouseenter", "#my-location", function () {
       // if gifs array is undefined, return
@@ -26,63 +21,59 @@ jQuery(function () {
       $("#mich-gif").remove();
     });
 
-  // Init Typewriter
-  typewriter();
-
   /* SECTION NAVIGATION */
   // Go to About Section
   $("#go-to-about").on("click", function () {
     // Scroll to top of page
-    $(document).scrollTop(0);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    // $(document).scrollTop(0);
   });
-
   // Go to Skills Section
   $("#go-to-skills").on("click", function () {
     //  About --> Skills
     if ($("#about-frame").css("display") === "block") {
-      $(document).scrollTop($(document).scrollTop() + 2333.5);
+      window.scrollBy({
+        top: MID_HEIGHT,
+        left: 0,
+        behavior: "smooth",
+      });
+      // $(document).scrollTop($(document).scrollTop() + MID_HEIGHT);
     } else {
       // Projects --> Skills
-      $(document).scrollTop($(document).scrollTop() - 2333.5);
+      window.scrollBy({
+        top: MID_HEIGHT * -1,
+        left: 0,
+        behavior: "smooth",
+      });
+      // $(document).scrollTop($(document).scrollTop() - MID_HEIGHT);
     }
   });
-
   // Go to Projects Section
   $("#go-to-projs").on("click", function () {
     //  About --> Projs
     if ($("#about-frame").css("display") === "block") {
-      $(document).scrollTop($(document).scrollTop() + 4667);
+      window.scrollBy({
+        top: MAX_HEIGHT,
+        left: 0,
+        behavior: "smooth",
+      });
+      // $(document).scrollTop($(document).scrollTop() + MAX_HEIGHT);
     } else {
       // Skills --> Projs
-      $(document).scrollTop($(document).scrollTop() + 2333.5);
+      window.scrollBy({
+        top: MID_HEIGHT,
+        left: 0,
+        behavior: "smooth",
+      });
+      // $(document).scrollTop($(document).scrollTop() + MID_HEIGHT);
     }
   });
 
-  /* FETCH GIFS */
-  let gifs;
-
-  fetch("http://localhost:5000/api/gifs")
-    .then((response) => response.json())
-    .then((data) => {
-      gifs = data[0];
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-
   /* SCROLL ANIMATION */
-  var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
-    perspective = 300,
-    zSpacing = -3500;
-  (zVals = []), ($frames = $(".frame")), (frames = $frames.toArray());
-  numFrames = $frames.length;
-
-  // print the z height of each frame
-
-  zVals.push(zSpacing * 2);
-  zVals.push(zSpacing * 1);
-  zVals.push(zSpacing * 0);
-
   $(window).on("scroll", function (d, e) {
     // disable all navigation buttons
     $("#go-to-skills").prop("disabled", true);
@@ -143,15 +134,19 @@ jQuery(function () {
     }
   });
 
-  // Run stars
+  /* INIT STARS */
   setupStars();
   updateStars();
-
   // Update stars on resize to keep them centered
   window.onresize = function () {
     setupStars();
   };
 });
+
+// If refresh is true, click the home button (fixes navigation bug)
+if (performance.getEntriesByType("navigation")[0].type === "reload") {
+  location.replace("/");
+}
 
 // To prevent Firefox FOUC, this must be here
 let FF_FOUC_FIX;
@@ -233,7 +228,7 @@ function updateStars() {
   window.requestAnimationFrame(updateStars);
 }
 
-/* TYEPWRITER */
+// Init Typewriter
 var aText = new Array(
   `a software engineering student based in`,
   `detroit, michigan</span>`
@@ -277,6 +272,29 @@ function typewriter() {
   }, 500);
 }
 
-// console.log("about: " + $("#about-frame").css("transform"));
-// console.log("skills: " + $("#skills-frame").css("transform"));
-// console.log("projects: " + $("#projects-frame").css("transform"));
+// Scrolling Init
+var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
+  perspective = 300,
+  zSpacing = -3500;
+(zVals = []), ($frames = $(".frame")), (frames = $frames.toArray());
+numFrames = $frames.length;
+
+// print the z height of each frame
+zVals.push(zSpacing * 2);
+zVals.push(zSpacing * 1);
+zVals.push(zSpacing * 0);
+
+/* FETCH GIFS */
+let gifs;
+
+fetch("http://localhost:5000/api/gifs")
+  .then((response) => response.json())
+  .then((data) => {
+    gifs = data[0];
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+const MAX_HEIGHT = 4667;
+const MID_HEIGHT = MAX_HEIGHT / 2;
