@@ -2,4 +2,4 @@
 
 Just a place to showcase my work 🤠
 
-Click [here](https://ashportfolio.herokuapp.com/)
+To view the site click [here](https://ashportfolio.herokuapp.com/)!
