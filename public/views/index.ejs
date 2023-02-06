@@ -10,6 +10,10 @@
   <!-- My Styling -->
   <link rel="stylesheet" href="../css/style.css" />
 
+  <!-- Google Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
   <!-- Font Awesome Links -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -42,15 +46,17 @@
   </script>
   <canvas id="stars"></canvas>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand fixed-top m-0 d-flex justify-content-end" id="navigation-bar" style="padding: 1%">
-    <div class="container m-0">
-      <!-- <a href="/" class="navbar-brand" id="home-btn">Ash's Site</a> -->
+  <nav class="navbar navbar-expand fixed-top m-0 d-flex" id="navigation-bar" style="padding: 1%">
+    <div class="container" style="width: 100vw;">
+      <a href="/" class="navbar-brand" id="home-btn">
+        <!-- <img src="../imgs/download.png" alt="logo" width="30" /> -->
+      </a>
 
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
       </button> -->
 
-      <div class="collapse navbar-collapse" id="navmenu">
+      <div>
         <!-- <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a href="https://github.com/ashra-f" class="nav-link">
@@ -90,46 +96,114 @@
         <!-- display: none; -->
         <section class="container demo" id="projects">
           <h3 class="text-center">Projects</h3>
-          <ul class="list-group list-group-horizontal d-flex justify-content-center">
-            <li class="list-group-item h-25">
-              <button>click me</button>
-              <!-- <div class="card" style="width: 18rem">
-                <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and
-                    make up the bulk of the card's content.
-                  </p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+          <ul class="all-projects list-group list-group-horizontal d-flex justify-content-center">
+            <li class="list-group-item project">
+              <div class="card" style="width: 18rem">
+                <!--Img Wrapper -->
+                <div class="card-img-top d-flex justify-content-center align-items-center">
+                  <img src="../imgs/study.png" class="studyspot-img" alt="studyspot image" />
                 </div>
-              </div> -->
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column justify-content-space-between">
+                  <div class="container h-100 p-0">
+                    <!-- Project Title -->
+                    <h5 class="card-title">studySpot</h5>
+                    <!-- Project Description -->
+                    <p class="card-text">
+                      A forum web app for UMD students. Using sticky notes users can post questions and answers to help
+                      each other
+                      with their studies, hobbies, and more. Users can also create groups to discuss topics of their
+                      choice.
+                    </p>
+                  </div>
+                  <!-- studyspot Links -->
+                  <div class="container code-btns d-flex p-0 h-10">
+                    <a href="https://studyspot.herokuapp.com/" class="btn studyspot-link"
+                      style="margin-right: 5px;"><span class="material-symbols-outlined">
+                        visibility
+                      </span>
+                      <p>demo</p>
+                    </a>
+                    <a href="https://github.com/ashra-f/studyspot" class="btn studyspot-link">
+                      <span class="material-symbols-outlined">
+                        code
+                      </span>
+                      <p>code</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </li>
-            <li class="list-group-item h-25">
-              <!-- <div class="card" style="width: 18rem">
-                            <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">
-                                Some quick example text to build on the card title and
-                                make up the bulk of the card's content.
-                              </p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div> -->
+            <li class="list-group-item project">
+              <div class="card" style="width: 18rem">
+                <!--Img Wrapper -->
+                <div class="card-img-top d-flex justify-content-center align-items-center">
+                  <img src="../imgs/cpu.png" class="sim-img" alt="cpu-sim image" />
+                </div>
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column justify-content-space-between">
+                  <div class="container h-100 p-0">
+                    <!-- Project Title -->
+                    <h5 class="card-title">Job Processor Simulator</h5>
+                    <!-- Project Description -->
+                    <p class="card-text">
+                      Simulates a computer with multiple processors by using a priority queue to determine how many
+                      processors should be used
+                      to process jobs most efficiently
+                    </p>
+                  </div>
+                  <!-- Job Processor Links -->
+                  <div class="container code-btns d-flex p-0 h-10">
+                    <a href="https://ashra-f.github.io/Job-Processor-Sim/" class="btn jobproc-link"
+                      style="margin-right: 5px;"><span class="material-symbols-outlined">
+                        visibility
+                      </span>
+                      <p>demo</p>
+                    </a>
+                    <a href="https://github.com/ashra-f/Job-Processor-Sim" class="btn jobproc-link">
+                      <span class="material-symbols-outlined">
+                        code
+                      </span>
+                      <p>code</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </li>
-            <li class="list-group-item h-25">
-              <!-- <div class="card" style="width: 18rem">
-                            <img src="imgs/mad-cat.webp" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">
-                                Some quick example text to build on the card title and
-                                make up the bulk of the card's content.
-                              </p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div> -->
+            <li class="list-group-item project">
+              <div class="card" style="width: 18rem">
+                <!--Img Wrapper -->
+                <div class="card-img-top d-flex justify-content-center align-items-center">
+                  <img src="../imgs/design-patterns.png" class="design-img" alt="design pattern image" />
+                </div>
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column justify-content-space-between">
+                  <div class="container h-100 p-0">
+                    <!-- Project Title -->
+                    <h5 class="card-title">Design Pattern Tiny Tool</h5>
+                    <!-- Project Description -->
+                    <p class="card-text">
+                      Users can create design patterns by answering a series of questions. The
+                      generated design patterns are stored in a database and can be viewed by other users.
+                    </p>
+                  </div>
+                  <!-- studyspot Links -->
+                  <div class="container code-btns d-flex p-0 h-10">
+                    <a href="" class="btn design-link" style="margin-right: 5px;"><span
+                        class="material-symbols-outlined">
+                        visibility
+                      </span>
+                      <p>demo</p>
+                    </a>
+                    <a href="https://github.com/ashra-f/Design-Pattern-TinyTool" class="btn design-link">
+                      <span class="material-symbols-outlined">
+                        code
+                      </span>
+                      <p>code</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </section>
@@ -285,25 +359,24 @@
     </div>
   </div>
   <!-- URL Links -->
-  <ul class="d-flex bg-white justify-content-center align-items-center flex-column p-0 position-absolute"
-    style="list-style-type: none; border-radius: 3px; left: 0; bottom: 5%;">
+  <ul id="my-links" class="d-flex justify-content-center align-items-center flex-column p-0 position-absolute">
     <li class="nav-item">
-      <a href="https://github.com/ashra-f" class="nav-link">
+      <a href="https://github.com/ashra-f" class="nav-link" id="github">
         <img src="../imgs/github.png" alt="GitHub" />
       </a>
     </li>
     <li class="nav-item">
-      <a href="https://www.linkedin.com/in/ashra-f/" class="nav-link">
-        <img src="../imgs/linkedin.png" alt="LinkedIn" class="linkedin-img" />
+      <a href="https://www.linkedin.com/in/ashra-f/" class="nav-link" id="linkedin">
+        <img src="../imgs/linkedin.png" alt="LinkedIn" />
       </a>
     </li>
     <li class="nav-item">
-      <a href="mailto:ashrafhammoud2@gmail.com" class="nav-link">
+      <a href="mailto:ashrafhammoud2@gmail.com" class="nav-link" id="gmail">
         <img src="../imgs/gmail.png" alt="Gmail" />
       </a>
     </li>
     <li class="nav-item">
-      <a href="../myresume.pdf" class="nav-link">
+      <a href="../myresume.pdf" class="nav-link" id="resume">
         <img src="../imgs/download.png" alt="resume" />
       </a>
     </li>

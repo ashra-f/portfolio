@@ -38,7 +38,6 @@ jQuery(function () {
     if ($("#about-frame").css("display") === "block") {
       window.scrollBy({
         top: MID_HEIGHT,
-        left: 0,
         behavior: "smooth",
       });
       // $(document).scrollTop($(document).scrollTop() + MID_HEIGHT);
@@ -46,11 +45,14 @@ jQuery(function () {
       // Projects --> Skills
       window.scrollBy({
         top: MID_HEIGHT * -1,
-        left: 0,
         behavior: "smooth",
       });
       // $(document).scrollTop($(document).scrollTop() - MID_HEIGHT);
     }
+    // Wait 1 second then set skills-frame transform to 0
+    setTimeout(function () {
+      $("#skills-frame").css("transform", "translateZ(0px)");
+    }, 1000);
   });
   // Go to Projects Section
   $("#go-to-projs").on("click", function () {
@@ -71,6 +73,11 @@ jQuery(function () {
       });
       // $(document).scrollTop($(document).scrollTop() + MID_HEIGHT);
     }
+
+    // Wait 1 second then set skills-frame transform to 0
+    setTimeout(function () {
+      $("#projects-frame").css("transform", "translateZ(0px)");
+    }, 1000);
   });
 
   /* SCROLL ANIMATION */
@@ -296,5 +303,5 @@ fetch("http://localhost:5000/api/gifs")
     console.error("Error:", error);
   });
 
-const MAX_HEIGHT = 4667;
+const MAX_HEIGHT = 4666;
 const MID_HEIGHT = MAX_HEIGHT / 2;

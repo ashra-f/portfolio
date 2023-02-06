@@ -1,16 +1,18 @@
 HIGH Priority:
-    - Start projects section
-    - Set section transform to zero on landing
     - Responsive design
+    - Refactor code
     - Styling:
-        - projs section styling
-        - navbar styling
+        - navbar add logo
         - mark current location with a flag
 
 LOW Priority:
     - loading screen
     - rocket cursor animation
     - name: arabic feature
-    - top left animation next to ash's site
     - smoother scrolling
     - adjust star speed based on brower height
+    - labels for side links
+    - projects section
+        - add frosted background on imgs
+        - github for design pattern tool
+        - demo for design pattern tool
