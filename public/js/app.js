@@ -88,7 +88,7 @@ jQuery(function () {
     $("#go-to-about").prop("disabled", true);
 
     // e.preventDefault();
-    var top = document.body.scrollTop || document.documentElement.scrollTop,
+    let top = document.body.scrollTop || document.documentElement.scrollTop,
       delta = lastPos - top;
     lastPos = top;
 
@@ -119,8 +119,8 @@ jQuery(function () {
       }, 100);
     });
 
-    for (var i = 0; i < numFrames; i++) {
-      var newZVal = (zVals[i] += delta * -1.5),
+    for (let i = 0; i < numFrames; i++) {
+      let newZVal = (zVals[i] += delta * -1.5),
         frame = frames[i],
         transform = "translateZ(" + newZVal + "px)",
         opacity =
@@ -160,9 +160,9 @@ let FF_FOUC_FIX;
 
 // Function that keeps track of css transform value of frame box
 function getTransformValue(el) {
-  var transform = el.css("transform");
-  var matrix = transform.replace(/[^0-9\-.,]/g, "").split(",");
-  var value = matrix[14];
+  let transform = el.css("transform");
+  let matrix = transform.replace(/[^0-9\-.,]/g, "").split(",");
+  let value = matrix[14];
   // console.log(value);
   return parseInt(value);
 }
@@ -236,24 +236,24 @@ function updateStars() {
 }
 
 // Init Typewriter
-var aText = new Array(
+let aText = new Array(
   `a software engineering student based in`,
   `detroit, michigan</span>`
 );
 
-var iSpeed = 100; // time delay of print out
-var iIndex = 0; // start printing array at this posision
-var iArrLength = aText[0].length; // the length of the text array
-var iScrollAt = 20; // start scrolling up at this many lines
+let iSpeed = 100; // time delay of print out
+let iIndex = 0; // start printing array at this posision
+let iArrLength = aText[0].length; // the length of the text array
+let iScrollAt = 20; // start scrolling up at this many lines
 
-var iTextPos = 0; // initialise text position
-var sContents = ""; // initialise contents variable
-var iRow; // initialise current row
+let iTextPos = 0; // initialise text position
+let sContents = ""; // initialise contents variable
+let iRow; // initialise current row
 
 function typewriter() {
   sContents = " ";
   iRow = Math.max(0, iIndex - iScrollAt);
-  var destination = document.getElementById("typedtext");
+  let destination = document.getElementById("typedtext");
 
   while (iRow < iIndex) {
     sContents += aText[iRow++] + `<br /><span id="my-location">`;
@@ -263,6 +263,7 @@ function typewriter() {
     sContents +
     aText[iIndex].substring(0, iTextPos) +
     `<span id="blinker">_</span>`;
+
   if (iTextPos++ == iArrLength) {
     iTextPos = 0;
     iIndex++;
@@ -280,7 +281,7 @@ function typewriter() {
 }
 
 // Scrolling Init
-var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
+let lastPos = document.body.scrollTop || document.documentElement.scrollTop,
   perspective = 300,
   zSpacing = -3500;
 (zVals = []), ($frames = $(".frame")), (frames = $frames.toArray());
@@ -292,16 +293,29 @@ zVals.push(zSpacing * 1);
 zVals.push(zSpacing * 0);
 
 /* FETCH GIFS */
-let gifs;
+let gifs = [
+  "Animated-Flag-Michigan.gif",
+  "byebyebye.gif",
+  "det-pizza.gif",
+  "det-steel.gif",
+  "em-fire.gif",
+  "idek-man.gif",
+  "lion-go-spin.gif",
+  "nonono.gif",
+  "num1-michigan.gif",
+  "ohhhhhhh.gif",
+  "pisstons.gif",
+  "protect-democracy-protect-the-vote.gif",
+];
 
-fetch("http://localhost:5000/api/gifs")
-  .then((response) => response.json())
-  .then((data) => {
-    gifs = data[0];
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+// fetch("http://localhost:5000/api/gifs")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     gifs = data[0];
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   });
 
 const MAX_HEIGHT = 4666;
 const MID_HEIGHT = MAX_HEIGHT / 2;

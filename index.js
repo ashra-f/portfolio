@@ -16,13 +16,13 @@ app.get("/", (req, res) => {
 });
 
 // Create get gifs API
-app.get("/api/gifs", (req, res) => {
-  const gifs = [];
-  fs.readdir("./public/imgs/michigan-gifs", (err, files) => {
-    gifs.push(files);
-    res.json(gifs);
-  });
-});
+// app.get("/api/gifs", (req, res) => {
+//   const gifs = [];
+//   fs.readdir("./public/imgs/michigan-gifs", (err, files) => {
+//     gifs.push(files);
+//     res.json(gifs);
+//   });
+// });
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
