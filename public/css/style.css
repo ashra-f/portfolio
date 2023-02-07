@@ -794,4 +794,11 @@ icons
 .design-link:active,
 .design-link:focus {
   background-color: #ff3636 !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+  .orbit-wrap {
+    transform: scale(0.85);
+  }
 }/*# sourceMappingURL=style.css.map */

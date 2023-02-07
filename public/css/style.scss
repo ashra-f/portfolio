@@ -722,3 +722,19 @@ $icons : (('python', #306998, #FFD43B),
 .design-link:focus {
     background-color: #ff3636 !important;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+    .navigation-btn {
+        // color: rgba(33, 150, 243, 0.8) !important;
+    }
+
+    // add popover for [skills system] depending on the height of the screen
+
+    .orbit-wrap {
+        transform: scale(0.85);
+    }
+
+    // make project cards smaller for mobile
+
+}
