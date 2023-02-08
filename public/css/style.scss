@@ -89,7 +89,8 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 
     * {
         z-index: 2;
@@ -550,6 +551,7 @@ $icons : (('python', #306998, #FFD43B),
 }
 
 .navigation-btn {
+    width: 100%;
     font-size: 18px !important;
     color: white !important;
     display: flex !important;
@@ -604,7 +606,7 @@ $icons : (('python', #306998, #FFD43B),
     list-style-type: none;
     border-radius: 3px;
     left: 0;
-    bottom: 5%;
+    bottom: 0;
     background: none
 }
 
@@ -723,18 +725,18 @@ $icons : (('python', #306998, #FFD43B),
     background-color: #ff3636 !important;
 }
 
+
 /* MOBILE RESPONSIVE */
-@media (max-width: 500px) {
+@media (max-width: 410px) {
     .navigation-btn {
-        // color: rgba(33, 150, 243, 0.8) !important;
+        font-size: 16px !important;
     }
+}
 
-    // add popover for [skills system] depending on the height of the screen
-
-    .orbit-wrap {
-        transform: scale(0.85);
+@media (max-width: 320px) {
+    .navigation-btn {
+        font-size: 13px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
     }
-
-    // make project cards smaller for mobile
-
 }

@@ -80,7 +80,8 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 #about *,
 #projects *,
@@ -635,6 +636,7 @@ icons
 }
 
 .navigation-btn {
+  width: 100%;
   font-size: 18px !important;
   color: white !important;
   display: flex !important;
@@ -685,7 +687,7 @@ icons
   list-style-type: none;
   border-radius: 3px;
   left: 0;
-  bottom: 5%;
+  bottom: 0;
   background: none;
 }
 
@@ -797,8 +799,15 @@ icons
 }
 
 /* MOBILE RESPONSIVE */
-@media (max-width: 500px) {
-  .orbit-wrap {
-    transform: scale(0.85);
+@media (max-width: 410px) {
+  .navigation-btn {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 320px) {
+  .navigation-btn {
+    font-size: 13px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
   }
 }/*# sourceMappingURL=style.css.map */

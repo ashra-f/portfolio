@@ -2,6 +2,9 @@ jQuery(function () {
   /* TYEPWRITER */
   typewriter();
 
+  /* RESCALE ORBIT WRAP */
+  handleResize();
+
   /* DISPLAY RANDOM GIF ON-HOVER */
   $(document)
     .on("mouseenter", "#my-location", function () {
@@ -319,3 +322,59 @@ let gifs = [
 
 const MAX_HEIGHT = 4666;
 const MID_HEIGHT = MAX_HEIGHT / 2;
+
+const orbitWrap = $(".orbit-wrap");
+const myLinks = $("#my-links");
+const planetDescription = $("#planet-description");
+
+function handleResize() {
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  let scaleValueOrbit = 1;
+  let scaleValueLinks = 1;
+  let scaleValueDescription = 1;
+  let marginBottomLinks = 16;
+
+  if (viewportWidth <= 300) {
+    scaleValueOrbit = 0.5;
+    if (viewportHeight <= 640) {
+      scaleValueLinks = 0.8;
+      marginBottomLinks = 0;
+    }
+  } else if (viewportWidth <= 350) {
+    scaleValueOrbit = 0.55;
+    if (viewportHeight <= 640) {
+      scaleValueLinks = 0.75;
+      marginBottomLinks = 0;
+    }
+  } else if (viewportWidth <= 380) {
+    scaleValueOrbit = 0.6;
+  } else if (viewportWidth <= 430) {
+    scaleValueOrbit = 0.65;
+    if (viewportHeight <= 640) {
+      scaleValueLinks = 0.8;
+      marginBottomLinks = 0;
+    }
+  } else if (viewportWidth <= 480) {
+    scaleValueOrbit = 0.75;
+    if (viewportHeight <= 640) {
+      scaleValueLinks = 0.8;
+      marginBottomLinks = 0;
+    }
+  } else if (viewportWidth <= 580) {
+    scaleValueOrbit = 0.85;
+  } else {
+    scaleValueOrbit = 1;
+  }
+
+  if (viewportHeight <= 858 && viewportWidth >= 733) {
+    scaleValueDescription = 0.8;
+  }
+
+  orbitWrap.css("transform", `scale(${scaleValueOrbit})`);
+  myLinks.css("transform", `scale(${scaleValueLinks})`);
+  planetDescription.css("transform", `scale(${scaleValueDescription})`);
+  myLinks.css("margin-bottom", `${marginBottomLinks}px`);
+}
+
+window.addEventListener("resize", handleResize);
