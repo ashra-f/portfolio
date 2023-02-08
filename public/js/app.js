@@ -333,6 +333,7 @@ function handleResize() {
   let scaleValueOrbit = 1;
   let scaleValueLinks = 1;
   let scaleValueDescription = 1;
+  let descriptionPos = 23;
   let marginBottomLinks = 16;
 
   if (viewportWidth <= 300) {
@@ -367,13 +368,16 @@ function handleResize() {
     scaleValueOrbit = 1;
   }
 
-  if (viewportHeight <= 858 && viewportWidth >= 733) {
+  if (viewportHeight <= 858 && viewportWidth <= 733) {
     scaleValueDescription = 0.8;
+    descriptionPos = 0;
   }
 
   orbitWrap.css("transform", `scale(${scaleValueOrbit})`);
   myLinks.css("transform", `scale(${scaleValueLinks})`);
   planetDescription.css("transform", `scale(${scaleValueDescription})`);
+  planetDescription.css("left", `${descriptionPos}px`);
+  planetDescription.css("bottom", `${descriptionPos}px`);
   myLinks.css("margin-bottom", `${marginBottomLinks}px`);
 }
 
