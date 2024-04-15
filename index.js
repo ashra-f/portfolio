@@ -1,4 +1,3 @@
-// const http = require("http");
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -14,15 +13,6 @@ app.set("views", path.join(__dirname, "public", "views"));
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-// Create get gifs API
-// app.get("/api/gifs", (req, res) => {
-//   const gifs = [];
-//   fs.readdir("./public/imgs/michigan-gifs", (err, files) => {
-//     gifs.push(files);
-//     res.json(gifs);
-//   });
-// });
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));

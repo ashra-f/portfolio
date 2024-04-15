@@ -1,2 +1,4 @@
 /node_modules
 /public/todo.txt
+/*/.DS_Store
+.vercel
