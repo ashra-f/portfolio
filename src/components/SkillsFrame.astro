@@ -1,0 +1,61 @@
+---
+import { skillRings } from "../data/skills";
+
+const today = new Date();
+const startDate = new Date("2020-06-10");
+const age = today.getFullYear() - startDate.getFullYear();
+const knownPlanets = skillRings.flat().length;
+---
+
+<div
+  id="skills-frame"
+  class="frame box"
+  style="transform: translateZ(-3500px); display: none"
+>
+  <section class="container demo" id="skills">
+    <div class="orbit">
+      <ul class="orbit-wrap">
+        <li class="orbit-center">
+          <i class="orbit-center__icon fa fa-code"></i>
+        </li>
+        {
+          skillRings.map((ring, i) => (
+            <li>
+              <ul class={`ring-${i}`}>
+                {ring.map((skill) => (
+                  <li>
+                    <a href={skill.url} target="_blank" rel="noopener noreferrer">
+                      {skill.type === "fa" ? (
+                        <i class={`orbit-icon ${skill.icon}`} />
+                      ) : (
+                        <img
+                          src={skill.icon}
+                          alt={skill.name}
+                          class="orbit-icon"
+                        />
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div
+      id="planet-description"
+      class="container position-fixed"
+      style="bottom: 23px; left: 23px; width: 300px"
+    >
+      <h4><strong>[</strong>the skills system<strong>]</strong></h4>
+      <p>
+        🌍 known planets: <span id="known-planets">{knownPlanets}</span>
+        <br />
+        🕰️ age: <span id="skills-age">{age} years</span>
+        <br />
+        🪐 largest planet: <span id="largest-planet">C++</span>
+      </p>
+    </div>
+  </section>
+</div>

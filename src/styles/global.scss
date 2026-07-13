@@ -1,14 +1,15 @@
-// import math module
 @use "sass:math";
+@use "sass:map";
+@use "sass:list";
 
 @font-face {
   font-family: Futuristic-Light;
-  src: url("../fonts/RollboxExtraLight-p7PYy.ttf");
+  src: url("/fonts/RollboxExtraLight-p7PYy.ttf");
 }
 
 @font-face {
   font-family: Futuristic-Black;
-  src: url("../fonts/RollboxBoldItalic-ZVx0q.ttf");
+  src: url("/fonts/RollboxBoldItalic-ZVx0q.ttf");
 }
 
 * {
@@ -43,7 +44,6 @@ body {
   color: aliceblue !important;
   overflow: hidden;
   scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; // Internet Explorer 10+
 }
 
 img {
@@ -107,143 +107,16 @@ section::after {
   );
 }
 
-.demo .scroll-btn {
-  position: absolute;
-  bottom: 0;
-  left: 100%;
-  z-index: 2;
-  display: inline-block;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  color: #fff;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.demo .scroll-btn:hover {
-  opacity: 0.5;
-}
-
-#skills .scroll-btn,
-#about .scroll-btn {
-  padding-top: 60px;
-}
-
-#skills .scroll-btn,
-#about .scroll-btn {
-  padding-top: 80px;
-}
-
-#skills .scroll-btn span,
-#about .scroll-btn span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  margin-left: -12px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-animation: sdb07 2s infinite;
-  animation: sdb07 2s infinite;
-  opacity: 0;
-  box-sizing: border-box;
-}
-
-#skills .scroll-btn span:nth-of-type(1),
-#about .scroll-btn span:nth-of-type(1) {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-#skills .scroll-btn span:nth-of-type(2),
-#about .scroll-btn span:nth-of-type(2) {
-  top: 16px;
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
-}
-
-#skills .scroll-btn span:nth-of-type(3),
-#about .scroll-btn span:nth-of-type(3) {
-  top: 32px;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
-
-@-webkit-keyframes sdb07 {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes sdb07 {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes sdb10 {
-  0% {
-    -webkit-transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 1;
-  }
-
-  80% {
-    -webkit-transform: translate(0, 20px);
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes sdb10 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 1;
-  }
-
-  80% {
-    transform: translate(0, 20px);
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-// End of Scroll Buttons
 #my-location {
   position: relative;
+}
+
+#blinker {
+  transition: opacity 0.5s;
+}
+
+#blinker.blinker-hidden {
+  opacity: 0;
 }
 
 #mich-gif {
@@ -284,10 +157,10 @@ section::after {
 
 $orbitItemSize: 1.6em;
 $map: (
-  ring-0: 4,
-  ring-1: 3,
+  ring-0: 5,
+  ring-1: 4,
   ring-2: 8,
-  ring-3: 3,
+  ring-3: 4,
 );
 $lastRing: 3;
 
@@ -387,7 +260,7 @@ ul[class^="ring"] {
     }
   }
 
-  @include orbit-item(map-get($map, ring-#{$i}), $i);
+  @include orbit-item(map.get($map, ring-#{$i}), $i);
 }
 
 %ring {
@@ -443,8 +316,8 @@ ul[class^="ring"] {
   }
 }
 
-/* 
-    animations 
+/*
+    animations
 */
 @keyframes clockwiseRotate {
   from {
@@ -505,8 +378,8 @@ ul[class^="ring"] {
   position: absolute;
 }
 
-/* 
-icons 
+/*
+icons
 */
 $icons: (
   ("python", #306998, #ffd43b),
@@ -524,9 +397,9 @@ $icons: (
 );
 
 @each $icon in $icons {
-  .fa-#{nth($icon, 1)} {
-    background: nth($icon, 2);
-    color: nth($icon, 3);
+  .fa-#{list.nth($icon, 1)} {
+    background: list.nth($icon, 2);
+    color: list.nth($icon, 3);
   }
 }
 
@@ -625,7 +498,7 @@ $icons: (
 .bigboardleague-img,
 .sim-img,
 .voting-app-img {
-  height: 150;
+  height: 150px;
   width: 150px;
   object-fit: cover;
 }
@@ -661,9 +534,15 @@ $icons: (
     -moz-transform: translate(0px, 5px);
     box-shadow: 0px 1px 0px 0px;
   }
+
+  a[aria-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
 
-// StudySpot Links
+// Big Board League Links
 .bigboardleague-link {
   background-color: #55acee !important;
   box-shadow: 0px 5px 0px 0px #3c93d5 !important;
@@ -693,7 +572,7 @@ $icons: (
   background-color: #ffe87c !important;
 }
 
-// Design Pattern Registry Links
+// Mark's Voting App Links
 .voting-app-link {
   background-color: #ff3636 !important;
   box-shadow: 0px 5px 0px 0px #ca0101 !important;

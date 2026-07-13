@@ -1,23 +1,19 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My portfolio",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "author": "Ashraf Hammoud",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  },
   "dependencies": {
+    "astro": "^5.0.0",
     "bootstrap": "^5.3.3",
-    "ejs": "^3.1.10",
-    "express": "^4.22.0",
-    "fs": "0.0.1-security",
-    "jquery-awesome-cursor": "^0.3.1",
-    "three": "^0.149.0"
+    "sass": "^1.83.0"
   }
 }

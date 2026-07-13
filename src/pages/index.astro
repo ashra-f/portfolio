@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import StarsCanvas from "../components/StarsCanvas.astro";
+import AboutFrame from "../components/AboutFrame.astro";
+import SkillsFrame from "../components/SkillsFrame.astro";
+import ProjectsFrame from "../components/ProjectsFrame.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+---
+
+<BaseLayout title="Ash's Portfolio">
+  <StarsCanvas />
+  <Nav />
+  <div
+    class="container d-flex justify-content-center align-items-center p-3 flex-column"
+    id="content"
+  >
+    <div id="viewport">
+      <ProjectsFrame />
+      <SkillsFrame />
+      <AboutFrame />
+    </div>
+  </div>
+  <SocialLinks />
+</BaseLayout>
